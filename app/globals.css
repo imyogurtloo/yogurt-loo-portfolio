@@ -71,7 +71,8 @@ h1 { font-size: clamp(70px, 12.7vw, 195px); font-weight: 700; letter-spacing: -.
 .project-info p { color: #c2c2c5; font-size: 16px; line-height: 1.55; max-width: 470px; }
 .project-topline { color: var(--muted); display: flex; font-family: monospace; font-size: 11px; gap: 18px; letter-spacing: .08em; margin-bottom: 18px; text-transform: uppercase; }
 .project-status { color: var(--accent); }
-.project-info h3 { font-size: clamp(38px, 5vw, 72px); }
+.project-info h3 { align-items: baseline; display: flex; flex-wrap: wrap; font-size: clamp(38px, 5vw, 72px); gap: 12px 18px; }
+.project-info h3 small { border-left: 1px solid var(--accent); color: var(--accent); font-family: monospace; font-size: 11px; font-weight: 400; letter-spacing: .12em; line-height: 1; padding-left: 12px; }
 .project-tags { margin: -5px 0 23px; }
 .project-tags span { border-color: var(--line); color: #d6d6d2; text-transform: uppercase; }
 .project-code { align-items: flex-start; background: #111117; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 13px; justify-content: center; min-height: 190px; overflow: hidden; padding: 25px; position: relative; }
