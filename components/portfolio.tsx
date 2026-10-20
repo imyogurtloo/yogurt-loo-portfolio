@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, Code2, Download, Mail, MapPin, Menu, X } from 'lucide-react'
 
 const sections = [
@@ -35,12 +35,13 @@ const skills = {
 export default function Portfolio() {
   const [active, setActive] = useState('about')
   const [menuOpen, setMenuOpen] = useState(false)
+  const contentRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
       if (visible) setActive(visible.target.id)
-    }, { rootMargin: '-18% 0px -62% 0px', threshold: [0, .2, .5, 1] })
+    }, { root: contentRef.current, rootMargin: '-18% 0px -62% 0px', threshold: [0, .2, .5, 1] })
     sections.forEach(({ id }) => { const element = document.getElementById(id); if (element) observer.observe(element) })
     return () => observer.disconnect()
   }, [])
@@ -59,7 +60,7 @@ export default function Portfolio() {
         <button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}>{menuOpen ? <X /> : <Menu />}</button>
       </div>
     </aside>
-    <main className="cv-content" id="top">
+    <main className="cv-content" id="top" ref={contentRef}>
       <section className="cv-section about-section" id="about"><div className="section-number">01 / About</div><div className="about-grid"><div><p className="eyebrow">Senior frontend developer / Malaysia</p><h1>I build what <span>moves the web forward.</span></h1></div><div className="about-copy"><p>I&apos;m a Senior Frontend Developer experienced in crafting responsive web applications and cross-platform mobile applications. I care about the details that turn a functional interface into something people enjoy using.</p><p>From frontend architecture and API integration to performance, deployment workflows, code reviews, and mentoring — I bring a systems mindset to every layer of the work.</p><a className="inline-link" href="mailto:yogurtloo.studio@gmail.com">Let&apos;s work together <ArrowUpRight size={15} /></a></div></div></section>
       <section className="cv-section" id="experience"><div className="section-number">02 / Experience</div><div className="section-intro"><h2>A frontend practice built over time.</h2><p>Selected roles, responsibilities, and ways of working.</p></div><div className="experience-list">{experiences.map((experience, index) => <article className="experience-entry" key={`${experience.company}-${experience.date}`}><div className="experience-date">{experience.date}</div><div><p className="entry-label">{index === 0 ? 'CURRENT ROLE' : `0${index + 1} / EXPERIENCE`}</p><h3>{experience.role}</h3><p className="company">{experience.company}{experience.detail && <span> · {experience.detail}</span>}</p><div className="tag-list">{experience.technologies.map(item => <span key={item}>{item}</span>)}</div><ul>{experience.bullets.map(bullet => <li key={bullet}>{bullet}</li>)}</ul></div></article>)}</div></section>
       <section className="cv-section" id="work"><div className="section-number">03 / Selected projects</div><div className="section-intro"><h2>Work I&apos;ve helped bring to life.</h2><p>Four project groups, shaped through frontend contribution.</p></div><div className="projects-list">{projects.map((project, index) => <article className="project-entry" key={`${project.title}-${project.label}`}><div className="project-index">0{index + 1}</div><div><p className="entry-label">{project.label}</p><h3>{project.title}</h3><p className="project-description">{project.description}</p><div className="tag-list">{project.tech.map(item => <span key={item}>{item}</span>)}</div>{project.url && <a className="inline-link" href={project.url} target="_blank" rel="noreferrer">View project <ArrowUpRight size={15} /></a>}</div></article>)}</div></section>
