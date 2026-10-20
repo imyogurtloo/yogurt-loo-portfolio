@@ -60,7 +60,8 @@ export default function Portfolio() {
         if (entry.isIntersecting) entry.target.classList.add('is-visible')
       })
     }, { root: contentRef.current, rootMargin: '-18% 0px -62% 0px', threshold: [0, .2, .5, 1] })
-    sections.forEach(({ id }) => { const element = document.getElementById(id); if (element) observer.observe(element) })
+    const observedElements = sections.map(({ id }) => document.getElementById(id)).filter((element): element is HTMLElement => element !== null)
+    observedElements.forEach((element) => observer.observe(element))
     return () => observer.disconnect()
   }, [])
 
@@ -70,12 +71,12 @@ export default function Portfolio() {
         <a href="#top" className="identity" aria-label="Yogurt Loo Hui Ling home"><span className="identity-mark">YL</span><span><strong>Yogurt Loo Hui Ling</strong><small>Senior Frontend Developer</small></span></a>
         <div className="portrait" role="img" aria-label="Portrait artwork inspired by mountain landscapes" />
         <p className="sidebar-intro">I build responsive interfaces, scalable applications, and digital experiences that feel as good as they work.</p>
-        <nav className={menuOpen ? 'sidebar-nav open' : 'sidebar-nav'} aria-label="Portfolio sections">
+        <nav id="portfolio-navigation" className={menuOpen ? 'sidebar-nav open' : 'sidebar-nav'} aria-label="Portfolio sections">
           {sections.map((section, index) => <a className={active === section.id ? 'active' : ''} href={`#${section.id}`} onClick={() => setMenuOpen(false)} key={section.id}><span>0{index + 1}</span>{section.label}</a>)}
         </nav>
         <div className="sidebar-links"><a href="mailto:yogurtloo.studio@gmail.com"><Mail size={15} /> Email</a><a href="tel:+60169441349"><span className="phone-icon">↗</span> Phone</a><span><MapPin size={15} /> Kuala Lumpur, Malaysia</span></div>
         <div className="sidebar-footer"><span>© 2026</span><span>Available for select projects</span></div>
-        <button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}>{menuOpen ? <X /> : <Menu />}</button>
+        <button type="button" className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="portfolio-navigation" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}>{menuOpen ? <X /> : <Menu />}</button>
       </div>
     </aside>
     <main className="cv-content" id="top" ref={contentRef}>
