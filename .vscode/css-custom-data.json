@@ -1,0 +1,29 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    {
+      "name": "@theme",
+      "description": "Tailwind CSS v4 theme tokens used to generate utility classes."
+    },
+    {
+      "name": "@custom-variant",
+      "description": "Tailwind CSS v4 custom variant, such as mobile breakpoints."
+    },
+    {
+      "name": "@plugin",
+      "description": "Load a Tailwind CSS v4 plugin."
+    },
+    {
+      "name": "@source",
+      "description": "Register additional Tailwind CSS v4 content sources."
+    },
+    {
+      "name": "@utility",
+      "description": "Define a custom Tailwind CSS v4 utility."
+    },
+    {
+      "name": "@config",
+      "description": "Point Tailwind CSS v4 at a JavaScript config file."
+    }
+  ]
+}
