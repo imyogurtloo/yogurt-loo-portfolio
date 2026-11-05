@@ -59,6 +59,17 @@ button:focus-visible {
   background-size: 400% 400%;
 }
 
+@media (min-width: 801px) and (max-width: 1600px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-grid > :last-child {
+    justify-self: end;
+    max-width: 560px;
+  }
+}
+
 @media (max-width: 800px) {
   .page-shell {
     animation: none;

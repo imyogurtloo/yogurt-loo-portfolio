@@ -17,7 +17,7 @@ export function AboutSection() {
       id="about"
     >
       <div className={sectionNumber}>01 / About</div>
-      <div className="mt-[18vh] grid grid-cols-[1.15fr_0.85fr] gap-[4vw] mobile:mt-[50px] mobile:block">
+      <div className="hero-grid mt-[18vh] grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-[5vw] mobile:mt-[50px] mobile:block">
         <div className="animate-[hero-copy-in_0.65s_cubic-bezier(0.2,0.7,0.2,1)_both]">
           <p className="mb-7 font-[monospace] text-[12px] tracking-[0.1em] text-fog uppercase">
             Senior frontend developer / Malaysia
