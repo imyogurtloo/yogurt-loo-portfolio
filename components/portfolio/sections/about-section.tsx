@@ -26,7 +26,7 @@ export function AboutSection() {
             Building systems. <span className="text-aqua">Shaping experiences.</span>
           </h1>
         </div>
-        <div className="min-w-0 max-w-[560px] self-end text-[16px] leading-[1.65] text-fog animate-[hero-copy-in_0.65s_0.13s_cubic-bezier(0.2,0.7,0.2,1)_both] mobile:mt-10">
+        <div className="min-w-0 max-w-[560px] text-[16px] leading-[1.65] text-fog animate-[hero-copy-in_0.65s_0.13s_cubic-bezier(0.2,0.7,0.2,1)_both] mobile:mt-10">
           <p className="mb-5">
             I&apos;m a Senior Frontend Developer experienced in crafting
             responsive web applications and cross-platform mobile applications.
